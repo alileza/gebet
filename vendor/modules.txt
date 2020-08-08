@@ -14,11 +14,15 @@ github.com/alecthomas/units
 ## explicit
 github.com/bitly/go-nsq
 # github.com/davecgh/go-spew v1.1.1
-## explicit
 github.com/davecgh/go-spew/spew
+# github.com/ghodss/yaml v1.0.0
+## explicit
+github.com/ghodss/yaml
 # github.com/go-sql-driver/mysql v1.4.1
 ## explicit
 github.com/go-sql-driver/mysql
+# github.com/gobuffalo/here v0.6.0
+github.com/gobuffalo/here
 # github.com/golang/mock v1.4.3
 ## explicit
 github.com/golang/mock/gomock
@@ -39,12 +43,21 @@ github.com/jmoiron/sqlx/types
 github.com/joho/godotenv
 # github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88
 ## explicit
-# github.com/kr/pretty v0.1.0
-## explicit
 # github.com/lib/pq v1.0.0
 ## explicit
 github.com/lib/pq
 github.com/lib/pq/oid
+# github.com/markbates/pkger v0.17.0
+## explicit
+github.com/markbates/pkger
+github.com/markbates/pkger/here
+github.com/markbates/pkger/internal/maps
+github.com/markbates/pkger/internal/takeon/github.com/markbates/hepa
+github.com/markbates/pkger/internal/takeon/github.com/markbates/hepa/filters
+github.com/markbates/pkger/pkging
+github.com/markbates/pkger/pkging/embed
+github.com/markbates/pkger/pkging/mem
+github.com/markbates/pkger/pkging/stdos
 # github.com/mattn/go-colorable v0.1.2
 ## explicit
 # github.com/mattn/go-runewidth v0.0.4
@@ -52,6 +65,9 @@ github.com/lib/pq/oid
 github.com/mattn/go-runewidth
 # github.com/nsqio/go-nsq v1.0.7
 ## explicit
+# github.com/oklog/run v1.1.0
+## explicit
+github.com/oklog/run
 # github.com/olekukonko/tablewriter v0.0.1
 ## explicit
 github.com/olekukonko/tablewriter
@@ -95,8 +111,6 @@ google.golang.org/appengine/cloudsql
 # gopkg.in/alecthomas/kingpin.v2 v2.2.6
 ## explicit
 gopkg.in/alecthomas/kingpin.v2
-# gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127
-## explicit
-# gopkg.in/yaml.v2 v2.2.2
+# gopkg.in/yaml.v2 v2.2.7
 ## explicit
 gopkg.in/yaml.v2

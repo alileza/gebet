@@ -12,6 +12,7 @@ import (
 
 	"github.com/tomatool/tomato/config"
 	"github.com/tomatool/tomato/tomato"
+	"github.com/tomatool/tomato/web"
 )
 
 // AppHelpTemplate is the text template for the Default help topic.
@@ -30,6 +31,7 @@ func main() {
 	log := log.New(os.Stdout, "", 0)
 
 	app := cli.NewApp()
+
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:  "env.file, e",
@@ -46,15 +48,37 @@ func main() {
 		},
 	}
 
-	app.Before = func(ctx *cli.Context) error {
-		if envFile := ctx.String("env.file"); envFile != "" {
-			return godotenv.Load(envFile)
-		}
+	app.Commands = []cli.Command{
+		cli.Command{
+			Name:        "edit",
+			Description: "edit tomato related file",
+			Action:      web.New().Handler,
+		},
+		cli.Command{
+			Name:        "run",
+			Description: "Run tomato testing suite",
+			Flags:       app.Flags,
+			Before: func(ctx *cli.Context) error {
+				if envFile := ctx.String("env.file"); envFile != "" {
+					return godotenv.Load(envFile)
+				}
 
-		return nil
+				return nil
+			},
+			Action: runHandler(log),
+		},
 	}
+	app.Action = runHandler(log)
 
-	app.Action = func(ctx *cli.Context) error {
+	if err := app.Run(os.Args); err != nil {
+		log.Printf("%v", colors.Bold(colors.Red)(err))
+		os.Exit(1)
+	}
+}
+
+func runHandler(log *log.Logger) func(*cli.Context) error {
+	return func(ctx *cli.Context) error {
+		// Initialize astilectron
 		var configPath string
 
 		// backward compability
@@ -87,10 +111,5 @@ func main() {
 		}
 
 		return t.Run()
-	}
-
-	if err := app.Run(os.Args); err != nil {
-		log.Printf("%v", colors.Bold(colors.Red)(err))
-		os.Exit(1)
 	}
 }
